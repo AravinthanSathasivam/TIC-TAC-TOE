@@ -1,0 +1,31 @@
+.game-base{
+    display: flex;
+    justify-content: center;
+}
+
+#grid {
+    margin: 2rem auto;
+    display: grid;
+    gap: 8px;
+    grid-template-columns: auto auto auto;
+    /* background-color: #2196F3; */
+    padding: 10px;
+    width: 50%;
+
+}
+
+
+#grid .cell {
+    background-color: rgba(255, 255, 255, 0.8);
+    /* border: 1px solid rgba(0, 0, 0, 0.8); */
+    border: 1px solid rgb(3, 34, 34);
+    padding: 50px;
+    font-size: 30px;
+    text-align: center;
+}
+
+
+#grid .cell:hover {
+    background-color: lightblue;
+    cursor: pointer;
+}

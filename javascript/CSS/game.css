@@ -1,0 +1,24 @@
+@import url('./player.css');
+@import url('./grid.css');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body{
+    background-color: aliceblue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+main{
+    text-align: center;
+    margin: auto;
+}
+
+footer{
+    font-size: .75rem;
+    text-align: center;
+}
