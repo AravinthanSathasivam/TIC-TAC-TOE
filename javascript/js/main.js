@@ -7,7 +7,17 @@ let playersName = ['Player 1', 'Player 2'];
 let playersScore = [0,0];
 let currentPlayer = 0;
 let msgEl = document.querySelector('#msg');
+let resetBtn = document.getElementById("resetBtn");
 let end = false;
+
+
+// Retrieve scores from localStorage, if they exist
+if (localStorage.getItem('player1Score') !== null) {
+    playersScore[0] = parseInt(localStorage.getItem('player1Score'));
+  }
+  if (localStorage.getItem('player2Score') !== null) {
+    playersScore[1] = parseInt(localStorage.getItem('player2Score'));
+  }
 
 //Show default player names
 let namePlayer1El = document.querySelector("#player1 .name");
@@ -25,6 +35,22 @@ scorePlayer2El.innerHTML = playersScore[1];
 function showMsg(msg){
     msgEl.innerHTML = msg;
     msgEl.style.display = 'block';
+    resetBtn.addEventListener("click", reset);
+    msgEl.appendChild(resetBtn);
+    msgEl.addEventListener("click", reset);
+}
+
+function reset() {
+    cellsEl.forEach(cell => {
+        cell.innerHTML = "";
+        cell.style.background = "";
+    });
+    currentPlayer = 0;
+    end = false;
+    scorePlayer1El.innerHTML = playersScore[0];
+    scorePlayer2El.innerHTML = playersScore[1];
+    hideMsg();
+    msgEl.removeEventListener("click", reset);
 }
 
 
@@ -35,7 +61,7 @@ const hideMsg = () => {
 }
 
 
-//
+
 
 const verify = () => {
 
@@ -48,6 +74,12 @@ const verify = () => {
         cellsEl[1].style.background = '#2ecc71';
         cellsEl[2].style.background = '#2ecc71';
         showMsg('Game Ended!!' + currentPlayer + " win");
+        playersScore[currentPlayer]++;
+        localStorage.setItem('player' + (currentPlayer+1) + 'Score', playersScore[currentPlayer]);
+        scorePlayer1El.innerHTML = playersScore[0];
+        scorePlayer2El.innerHTML = playersScore[1];
+        end = true;
+
 
     }else if(
         cellsEl[3].innerHTML == playerStick[currentPlayer]&&
@@ -58,6 +90,11 @@ const verify = () => {
         cellsEl[4].style.background = '#2ecc71';
         cellsEl[5].style.background = '#2ecc71';
         showMsg('Game Ended!!' + currentPlayer + " win");
+        playersScore[currentPlayer]++;
+        localStorage.setItem('player' + (currentPlayer+1) + 'Score', playersScore[currentPlayer]);
+        scorePlayer1El.innerHTML = playersScore[0];
+        scorePlayer2El.innerHTML = playersScore[1];
+        end = true;
 
     }else if(
         cellsEl[6].innerHTML == playerStick[currentPlayer]&&
@@ -68,6 +105,12 @@ const verify = () => {
         cellsEl[7].style.background = '#2ecc71';
         cellsEl[8].style.background = '#2ecc71';
         showMsg('Game Ended!!' + currentPlayer + " win");
+        playersScore[currentPlayer]++;
+        localStorage.setItem('player' + (currentPlayer+1) + 'Score', playersScore[currentPlayer]);
+        scorePlayer1El.innerHTML = playersScore[0];
+        scorePlayer2El.innerHTML = playersScore[1];
+        end = true;
+
     }
     else if (
         cellsEl[0].innerHTML == playerStick[currentPlayer]&&
@@ -78,6 +121,12 @@ const verify = () => {
         cellsEl[4].style.background = '#2ecc71';
         cellsEl[8].style.background = '#2ecc71';
         showMsg('Game Ended!!' + currentPlayer + " win");
+        playersScore[currentPlayer]++;
+        localStorage.setItem('player' + (currentPlayer+1) + 'Score', playersScore[currentPlayer]);
+        scorePlayer1El.innerHTML = playersScore[0];
+        scorePlayer2El.innerHTML = playersScore[1];
+        end = true;
+
 
     }else if (
         cellsEl[2].innerHTML == playerStick[currentPlayer]&&
@@ -89,6 +138,11 @@ const verify = () => {
         cellsEl[4].style.background = '#2ecc71';
         cellsEl[6].style.background = '#2ecc71';
         showMsg('Game Ended!!' + currentPlayer + " win");
+        playersScore[currentPlayer]++;
+        localStorage.setItem('player' + (currentPlayer+1) + 'Score', playersScore[currentPlayer]);
+        scorePlayer1El.innerHTML = playersScore[0];
+        scorePlayer2El.innerHTML = playersScore[1];
+        end = true;
 
     }else if(
         cellsEl[0].innerHTML == playerStick[currentPlayer]&&
@@ -99,6 +153,11 @@ const verify = () => {
         cellsEl[3].style.background = '#2ecc71';
         cellsEl[6].style.background = '#2ecc71';
         showMsg('Game Ended!!' + currentPlayer + " win");
+        playersScore[currentPlayer]++;
+        localStorage.setItem('player' + (currentPlayer+1) + 'Score', playersScore[currentPlayer]);
+        scorePlayer1El.innerHTML = playersScore[0];
+        scorePlayer2El.innerHTML = playersScore[1];
+        end = true;
 
     }else if(
         cellsEl[1].innerHTML == playerStick[currentPlayer]&&
@@ -109,6 +168,11 @@ const verify = () => {
         cellsEl[4].style.background = '#2ecc71';
         cellsEl[7].style.background = '#2ecc71';
         showMsg('Game Ended!!' + currentPlayer + " win");
+        playersScore[currentPlayer]++;
+        localStorage.setItem('player' + (currentPlayer+1) + 'Score', playersScore[currentPlayer]);
+        scorePlayer1El.innerHTML = playersScore[0];
+        scorePlayer2El.innerHTML = playersScore[1];
+        end = true;
     }
     else if(
         cellsEl[2].innerHTML == playerStick[currentPlayer]&&
@@ -119,6 +183,16 @@ const verify = () => {
         cellsEl[5].style.background = '#2ecc71';
         cellsEl[8].style.background = '#2ecc71';
         showMsg('Game Ended!!' + currentPlayer + " win");
+        playersScore[currentPlayer]++;
+        localStorage.setItem('player' + (currentPlayer+1) + 'Score', playersScore[currentPlayer]);
+        scorePlayer1El.innerHTML = playersScore[0];
+        scorePlayer2El.innerHTML = playersScore[1];
+        end = true;
+
+    }else if(cellsEl[8].innerHTML !== ""){
+        showMsg('Game Drawn!!');
+        end = true;
+
     }
     
     cellsEl.forEach(cellsEl => {
