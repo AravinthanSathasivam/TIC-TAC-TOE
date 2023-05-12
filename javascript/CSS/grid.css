@@ -31,3 +31,12 @@
     background-color: lightblue;
     cursor: pointer;
 }
+
+
+.cross{
+    display: none;
+}
+
+.circle{
+    display: none;
+}

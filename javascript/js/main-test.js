@@ -1,7 +1,8 @@
 console.log('Hello from js file');
 
 let cellsEl = document.querySelectorAll('.cell');
-
+let circle = document.querySelectorAll('.circle');
+let cross = document.querySelectorAll('.cross');
 let playerStick = ['X', 'O'];
 let playersName = ['Player 1', 'Player 2'];
 let playersScore = [0,0];
@@ -11,7 +12,7 @@ let resetBtn = document.getElementById("resetBtn");
 let end = false;
 
 
-// Get scores from localStorage
+// Retrieve scores from localStorage, if they exist
 if (localStorage.getItem('player1Score') !== null) {
     playersScore[0] = parseInt(localStorage.getItem('player1Score'));
   }
@@ -82,7 +83,6 @@ const verify = () => {
         scorePlayer1El.innerHTML = playersScore[0];
         scorePlayer2El.innerHTML = playersScore[1];
         end = true;
-       // reset();
 
 
     }else if(
@@ -192,7 +192,6 @@ const verify = () => {
         scorePlayer1El.innerHTML = playersScore[0];
         scorePlayer2El.innerHTML = playersScore[1];
         end = true;
-        
 
     }
     
@@ -204,7 +203,6 @@ const verify = () => {
     });
 };
 
-
 cellsEl.forEach(cellsEl => {
     cellsEl.addEventListener('click', function(event){
         hideMsg();
@@ -212,7 +210,7 @@ cellsEl.forEach(cellsEl => {
         console.log(event.target.innerHTML);
         if(event.target.innerHTML == ''){
             event.target.innerHTML = playerStick[currentPlayer];
-
+           
 
             verify();
 
@@ -225,7 +223,7 @@ cellsEl.forEach(cellsEl => {
                 }
 
             }else{
-                console.log("Game Ended!!");
+                showMsg('Game ended in a draw!');
             }
             
 

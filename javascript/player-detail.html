@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/game.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>XO Space</title>
+
+    <div class="title-div">
+        <div class="enter-player">Enter <br> Player <br>Name</div>
+    </div>
+
+    <div class="player-row">
+        <div class="player-card">
+            <img src="./assests/player01-img.png" alt="player1">
+            <div class="text-player">Player 01</div>
+            <input class="text-filed-player" required type="text" id="player1Name" placeholder="Enter Name" name="player1Name">
+        </div>
+        <div class="player-card">
+            <img src="./assests/player02-img.png" alt="player1">
+            <div class="text-player">Player 02</div>
+            <input class="text-filed-player" required type="text" id="player2Name" placeholder="Enter Name" name="player2Name">
+        </div>
+    </div>
+    <div class="btn-row">
+        <button id="btnNext" class="btn-next"><i class="fa fa-caret-right" aria-hidden="true"></i></button>
+    </div>
+</head>
+<script>
+    let saveName = document.getElementById("btnNext");
+let player1Name = document.querySelector('#player1Name');
+let player2Name = document.querySelector('#player2Name');
+
+saveName.addEventListener("click", function () {
+    if (player1Name.value !== "" && player2Name.value !== "") {
+
+        //Store Player names in localStorage
+        localStorage.setItem('player1Name', player1Name);
+        localStorage.setItem('player2Name', player2Name);
+
+        if (localStorage.getItem('player1Name') !== null) {
+            playersName[0] = localStorage.getItem('player1Name');
+        }
+        if (localStorage.getItem('player2Name') !== null) {
+            playersName[1] = localStorage.getItem('player2Name');
+        }
+
+        namePlayer1El.innerHTML = playersName[0];
+        namePlayer2El.innerHTML = playersName[1];
+
+    }else{
+        alert("Input Fileds are empty");
+    }
+});
+</script>
+<body>
+    
+</body>
+</html>
