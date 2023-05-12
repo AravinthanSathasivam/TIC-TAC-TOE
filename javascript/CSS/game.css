@@ -136,6 +136,8 @@ footer {
     flex-direction: column;
 }
 
+
+
 .player-card img{
     width:200px;
 }
@@ -178,3 +180,80 @@ footer {
 .btn-next:hover{
     background-color: #582a6e !important;
 }
+
+
+#msg{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 60vh;
+    width: 40%;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#msg button{
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    background-color: #582a6e;
+    color: #fff;
+    border: 0 !important;
+}
+
+
+#msg button:hover{
+    background-color: #371a45;
+}
+
+
+#msg .player1{
+    width: 180px;
+    height: 200px;
+    background: url(../assests/player02-win.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+#msg .player0{
+    width: 168px;
+    height: 200px;
+    background: url(../assests/player01-win.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+#msg .draw{
+    width: 208px;
+    height: 200px;
+    background: url(../assests/draw.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+#msg .info{
+    font-family: batmanfa, sans-serif;
+    color: #fff;
+    font-size: 60px;
+}
+
+#msg .winner{
+    font-weight: 600;
+    font-size: 50px;
+    font-family: batmanfo, sans-serif;
+    color: #371a45;
+
+}
+
+#resetBtn i{
+    color:#2ecc71;
+    font-size: 30px;
+
+}
+

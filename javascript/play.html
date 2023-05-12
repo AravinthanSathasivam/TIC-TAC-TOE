@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/msg.css">
     <link rel="stylesheet" href="css/game.css">
     <title>TIC TAC TOE</title>
@@ -13,17 +14,31 @@
 
         <div id="players">
             <div class="player" id="player1">
-                <div class="name"></div>
+                <img class="player-icon" src="./assests/player01-icon.png" alt="player-01">
+                <div class="player-score-detail">
+                    <div class="name"></div>
                 <div class="score">3</div>
+                </div>
+                
+            </div>
+
+            <div>
+                <img class="logo-XO" src="./assests/logo.png" alt="logo">
             </div>
             <div class="player" id="player2">
-                <div class="name"></div>
+                <img class="player-icon" src="./assests/player02-icon.png" alt="player-02">
+                <div class="player-score-detail">
+                    <div class="name"></div>
                 <div class="score">3</div>
+
+                </div>
+        
             </div>
         </div>
         <div id="msg">
-            You should not play here!
-            <button id="resetBtn">Reset</button>
+            <img class="player01-win-img" src="./assests/player01-win.png" alt="PLAYER 01 WIN">
+            <img class="player02-win-img" src="./assests/player02-img.png" alt="PLAYER 02 WIN">
+            <button id="resetBtn"><i class="fa fa-refresh fa-spin"></i></button>
         </div>
         
         <div class="game-base">

@@ -32,12 +32,15 @@ scorePlayer1El.innerHTML = playersScore[0];
 scorePlayer2El.innerHTML = playersScore[1];
 
 
-function showMsg(msg){
-    msgEl.innerHTML = msg;
-    msgEl.style.display = 'block';
+function showMsg(player,msg,whoWon){
+    msgEl.style.display = 'flex';
     resetBtn.addEventListener("click", reset);
-    msgEl.appendChild(resetBtn);
-    msgEl.addEventListener("click", reset);
+    msgEl.innerHTML = `
+    <div class="${whoWon}"></div>
+    <div class="winner">${player}</div>
+    <div class="info">${msg}</div>
+  `;
+  msgEl.appendChild(resetBtn);
 }
 
 function reset() {
@@ -73,10 +76,8 @@ const verify = () => {
         cellsEl[1].innerHTML == playerStick[currentPlayer]&&
         cellsEl[2].innerHTML == playerStick[currentPlayer]
     ){
-        cellsEl[0].style.background = '#2ecc71';
-        cellsEl[1].style.background = '#2ecc71';
-        cellsEl[2].style.background = '#2ecc71';
-        showMsg('Game Ended!!' + currentPlayer + " win");
+        
+        showMsg("Player " + currentPlayer,"Won", "player"+currentPlayer);
         playersScore[currentPlayer]++;
         localStorage.setItem('player' + (currentPlayer+1) + 'Score', playersScore[currentPlayer]);
         scorePlayer1El.innerHTML = playersScore[0];
@@ -90,10 +91,7 @@ const verify = () => {
         cellsEl[4].innerHTML == playerStick[currentPlayer]&&
         cellsEl[5].innerHTML == playerStick[currentPlayer]
     ){
-        cellsEl[3].style.background = '#2ecc71';
-        cellsEl[4].style.background = '#2ecc71';
-        cellsEl[5].style.background = '#2ecc71';
-        showMsg('Game Ended!!' + currentPlayer + " win");
+        showMsg("Player " + currentPlayer,"Won", "player"+currentPlayer);
         playersScore[currentPlayer]++;
         localStorage.setItem('player' + (currentPlayer+1) + 'Score', playersScore[currentPlayer]);
         scorePlayer1El.innerHTML = playersScore[0];
@@ -105,10 +103,7 @@ const verify = () => {
         cellsEl[7].innerHTML == playerStick[currentPlayer]&&
         cellsEl[8].innerHTML == playerStick[currentPlayer]
     ){
-        cellsEl[6].style.background = '#2ecc71';
-        cellsEl[7].style.background = '#2ecc71';
-        cellsEl[8].style.background = '#2ecc71';
-        showMsg('Game Ended!!' + currentPlayer + " win");
+        showMsg("Player " + currentPlayer,"Won", "player"+currentPlayer);
         playersScore[currentPlayer]++;
         localStorage.setItem('player' + (currentPlayer+1) + 'Score', playersScore[currentPlayer]);
         scorePlayer1El.innerHTML = playersScore[0];
@@ -121,10 +116,7 @@ const verify = () => {
         cellsEl[4].innerHTML == playerStick[currentPlayer]&&
         cellsEl[8].innerHTML == playerStick[currentPlayer]
     ){
-        cellsEl[0].style.background = '#2ecc71';
-        cellsEl[4].style.background = '#2ecc71';
-        cellsEl[8].style.background = '#2ecc71';
-        showMsg('Game Ended!!' + currentPlayer + " win");
+        showMsg("Player " + currentPlayer,"Won", "player"+currentPlayer);
         playersScore[currentPlayer]++;
         localStorage.setItem('player' + (currentPlayer+1) + 'Score', playersScore[currentPlayer]);
         scorePlayer1El.innerHTML = playersScore[0];
@@ -138,10 +130,7 @@ const verify = () => {
         cellsEl[6].innerHTML == playerStick[currentPlayer]
 
     ){
-        cellsEl[2].style.background = '#2ecc71';
-        cellsEl[4].style.background = '#2ecc71';
-        cellsEl[6].style.background = '#2ecc71';
-        showMsg('Game Ended!!' + currentPlayer + " win");
+        showMsg("Player " + currentPlayer,"Won", "player"+currentPlayer);
         playersScore[currentPlayer]++;
         localStorage.setItem('player' + (currentPlayer+1) + 'Score', playersScore[currentPlayer]);
         scorePlayer1El.innerHTML = playersScore[0];
@@ -153,10 +142,7 @@ const verify = () => {
         cellsEl[3].innerHTML == playerStick[currentPlayer]&&
         cellsEl[6].innerHTML == playerStick[currentPlayer]
     ){
-        cellsEl[0].style.background = '#2ecc71';
-        cellsEl[3].style.background = '#2ecc71';
-        cellsEl[6].style.background = '#2ecc71';
-        showMsg('Game Ended!!' + currentPlayer + " win");
+        showMsg("Player " + currentPlayer,"Won", "player"+currentPlayer);
         playersScore[currentPlayer]++;
         localStorage.setItem('player' + (currentPlayer+1) + 'Score', playersScore[currentPlayer]);
         scorePlayer1El.innerHTML = playersScore[0];
@@ -168,10 +154,7 @@ const verify = () => {
         cellsEl[4].innerHTML == playerStick[currentPlayer]&&
         cellsEl[7].innerHTML == playerStick[currentPlayer]
     ){
-        cellsEl[01].style.background = '#2ecc71';
-        cellsEl[4].style.background = '#2ecc71';
-        cellsEl[7].style.background = '#2ecc71';
-        showMsg('Game Ended!!' + currentPlayer + " win");
+        showMsg("Player " + currentPlayer,"Won", "player"+currentPlayer);
         playersScore[currentPlayer]++;
         localStorage.setItem('player' + (currentPlayer+1) + 'Score', playersScore[currentPlayer]);
         scorePlayer1El.innerHTML = playersScore[0];
@@ -183,10 +166,7 @@ const verify = () => {
         cellsEl[5].innerHTML == playerStick[currentPlayer]&&
         cellsEl[8].innerHTML == playerStick[currentPlayer]
     ){
-        cellsEl[2].style.background = '#2ecc71';
-        cellsEl[5].style.background = '#2ecc71';
-        cellsEl[8].style.background = '#2ecc71';
-        showMsg('Game Ended!!' + currentPlayer + " win");
+        showMsg("Player " + currentPlayer,"Won", "player"+currentPlayer);
         playersScore[currentPlayer]++;
         localStorage.setItem('player' + (currentPlayer+1) + 'Score', playersScore[currentPlayer]);
         scorePlayer1El.innerHTML = playersScore[0];
@@ -225,7 +205,7 @@ cellsEl.forEach(cellsEl => {
                 }
 
             }else{
-                console.log("Game Ended!!");
+                showMsg("Game Ended !! ","Draw", "draw");
             }
             
 

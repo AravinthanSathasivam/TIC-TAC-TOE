@@ -1,23 +1,62 @@
+@font-face {
+    font-family: batmanfa;
+    src: url(/javascript/font/batmfa.ttf);
+}
+
+@font-face {
+    font-family: batmanfo;
+    src: url(/javascript/font/batmfo__.ttf);
+}
+
 #players{
-    background-color: navy !important;
     justify-content: space-around;
     display: flex;
     padding: 1rem;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.logo-XO{
+    height: 125px;
 }
 
 
+.player-icon{
+    height: 120px;
+    left: 0px;
+    position: absolute;
+    bottom: 0px;
+}
+
 .player{
-    color: aqua;
-    border: 1px solid aqua;
+    display: flex;
     text-align: center;
-    width: 30%;
-    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    height: 70px;
+    padding: 10px;
+    background: rgb(0 0 0 / 39%);
+    background-image: linear-gradient(to right, rgb(0 0 0 / 0%), rgb(255 255 255 / 59%));
+    border-radius: 50px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.player-score-detail{
+    font-family: batmanfa, sans-serif;
+    text-align: center;
+    padding-left: 10px;
+
 }
 
 .player .name{
     font-weight: 700;
+    color: #371a45;
 }
 
 .player .score{
+    color: #fff;
     font-size: 40px;
 }
