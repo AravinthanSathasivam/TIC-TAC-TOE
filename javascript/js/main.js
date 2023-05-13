@@ -10,6 +10,22 @@ let msgEl = document.querySelector('#msg');
 let resetBtn = document.getElementById("resetBtn");
 let end = false;
 
+ // Get names from localStorage
+ if (localStorage.getItem('player1Name') !== null) {
+    playersName[0] = localStorage.getItem('player1Name');
+    console.log(localStorage.getItem('player1Name'));
+  }
+if (localStorage.getItem('player2Name') !== null) {
+    playersName[1] = localStorage.getItem('player2Name');
+  }
+  
+//Show default player names
+let namePlayer1El = document.querySelector("#player1 .name");
+let namePlayer2El = document.querySelector("#player2 .name");
+namePlayer1El.innerHTML = playersName[0];
+namePlayer2El.innerHTML = playersName[1];
+
+
 
 // Get scores from localStorage
 if (localStorage.getItem('player1Score') !== null) {
@@ -19,11 +35,6 @@ if (localStorage.getItem('player1Score') !== null) {
     playersScore[1] = parseInt(localStorage.getItem('player2Score'));
   }
 
-//Show default player names
-let namePlayer1El = document.querySelector("#player1 .name");
-let namePlayer2El = document.querySelector("#player2 .name");
-namePlayer1El.innerHTML = playersName[0];
-namePlayer2El.innerHTML = playersName[1];
 
 //Show default player scores
 let scorePlayer1El = document.querySelector("#player1 .score");
@@ -31,7 +42,7 @@ let scorePlayer2El = document.querySelector("#player2 .score");
 scorePlayer1El.innerHTML = playersScore[0];
 scorePlayer2El.innerHTML = playersScore[1];
 
-
+//Show Message Function
 function showMsg(player,msg,whoWon){
     msgEl.style.display = 'flex';
     resetBtn.addEventListener("click", reset);
@@ -43,6 +54,16 @@ function showMsg(player,msg,whoWon){
   msgEl.appendChild(resetBtn);
 }
 
+//Exit Game Function
+function exitGame(){
+    localStorage.removeItem('player1Name');
+    localStorage.removeItem('player2Name');
+    localStorage.removeItem('player1Score');
+    localStorage.removeItem('player2Score');
+    window.location.href = 'launch.html';
+}
+
+// Reset cell function
 function reset() {
     cellsEl.forEach(cell => {
         cell.innerHTML = "";
@@ -58,6 +79,14 @@ function reset() {
         cellsEl.removeEventListener("click", reset);
     })
 }
+
+
+// Snack bar (Toast) - Function
+function toastMsg() {
+    var x = document.getElementById("snackbar");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  }
 
 
 // hide the message when its finished
@@ -77,7 +106,7 @@ const verify = () => {
         cellsEl[2].innerHTML == playerStick[currentPlayer]
     ){
         
-        showMsg("Player " + currentPlayer,"Won", "player"+currentPlayer);
+        showMsg(playersName[currentPlayer],"Won", "player"+currentPlayer);
         playersScore[currentPlayer]++;
         localStorage.setItem('player' + (currentPlayer+1) + 'Score', playersScore[currentPlayer]);
         scorePlayer1El.innerHTML = playersScore[0];
@@ -91,7 +120,7 @@ const verify = () => {
         cellsEl[4].innerHTML == playerStick[currentPlayer]&&
         cellsEl[5].innerHTML == playerStick[currentPlayer]
     ){
-        showMsg("Player " + currentPlayer,"Won", "player"+currentPlayer);
+        showMsg(playersName[currentPlayer],"Won", "player"+currentPlayer);
         playersScore[currentPlayer]++;
         localStorage.setItem('player' + (currentPlayer+1) + 'Score', playersScore[currentPlayer]);
         scorePlayer1El.innerHTML = playersScore[0];
@@ -103,7 +132,7 @@ const verify = () => {
         cellsEl[7].innerHTML == playerStick[currentPlayer]&&
         cellsEl[8].innerHTML == playerStick[currentPlayer]
     ){
-        showMsg("Player " + currentPlayer,"Won", "player"+currentPlayer);
+        showMsg(playersName[currentPlayer],"Won", "player"+currentPlayer);
         playersScore[currentPlayer]++;
         localStorage.setItem('player' + (currentPlayer+1) + 'Score', playersScore[currentPlayer]);
         scorePlayer1El.innerHTML = playersScore[0];
@@ -116,7 +145,7 @@ const verify = () => {
         cellsEl[4].innerHTML == playerStick[currentPlayer]&&
         cellsEl[8].innerHTML == playerStick[currentPlayer]
     ){
-        showMsg("Player " + currentPlayer,"Won", "player"+currentPlayer);
+        showMsg(playersName[currentPlayer],"Won", "player"+currentPlayer);
         playersScore[currentPlayer]++;
         localStorage.setItem('player' + (currentPlayer+1) + 'Score', playersScore[currentPlayer]);
         scorePlayer1El.innerHTML = playersScore[0];
@@ -130,7 +159,7 @@ const verify = () => {
         cellsEl[6].innerHTML == playerStick[currentPlayer]
 
     ){
-        showMsg("Player " + currentPlayer,"Won", "player"+currentPlayer);
+        showMsg(playersName[currentPlayer],"Won", "player"+currentPlayer);
         playersScore[currentPlayer]++;
         localStorage.setItem('player' + (currentPlayer+1) + 'Score', playersScore[currentPlayer]);
         scorePlayer1El.innerHTML = playersScore[0];
@@ -142,7 +171,7 @@ const verify = () => {
         cellsEl[3].innerHTML == playerStick[currentPlayer]&&
         cellsEl[6].innerHTML == playerStick[currentPlayer]
     ){
-        showMsg("Player " + currentPlayer,"Won", "player"+currentPlayer);
+        showMsg(playersName[currentPlayer],"Won", "player"+currentPlayer);
         playersScore[currentPlayer]++;
         localStorage.setItem('player' + (currentPlayer+1) + 'Score', playersScore[currentPlayer]);
         scorePlayer1El.innerHTML = playersScore[0];
@@ -154,7 +183,7 @@ const verify = () => {
         cellsEl[4].innerHTML == playerStick[currentPlayer]&&
         cellsEl[7].innerHTML == playerStick[currentPlayer]
     ){
-        showMsg("Player " + currentPlayer,"Won", "player"+currentPlayer);
+        showMsg(playersName[currentPlayer],"Won", "player"+currentPlayer);
         playersScore[currentPlayer]++;
         localStorage.setItem('player' + (currentPlayer+1) + 'Score', playersScore[currentPlayer]);
         scorePlayer1El.innerHTML = playersScore[0];
@@ -166,7 +195,7 @@ const verify = () => {
         cellsEl[5].innerHTML == playerStick[currentPlayer]&&
         cellsEl[8].innerHTML == playerStick[currentPlayer]
     ){
-        showMsg("Player " + currentPlayer,"Won", "player"+currentPlayer);
+        showMsg(playersName[currentPlayer],"Won", "player"+currentPlayer);
         playersScore[currentPlayer]++;
         localStorage.setItem('player' + (currentPlayer+1) + 'Score', playersScore[currentPlayer]);
         scorePlayer1El.innerHTML = playersScore[0];
@@ -210,7 +239,7 @@ cellsEl.forEach(cellsEl => {
             
 
         }else{
-            showMsg('Already played');
+            toastMsg();
         } 
     });
 });

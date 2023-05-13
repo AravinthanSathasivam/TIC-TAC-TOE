@@ -13,13 +13,33 @@
     display: flex;
     padding: 1rem;
     align-items: center;
-    margin-top: 40px;
 }
 
 .logo-XO{
     height: 125px;
 }
 
+.exit-game-row{
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 0 20px;
+}
+
+.exit-btn{
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    border: 0px;
+    font-size: 21px;
+    background: white;
+    color: #ff3636;
+}
+
+.exit-btn:hover{
+    background: #ff3636;
+    color: #fff;
+
+}
 
 .player-icon{
     height: 120px;
